@@ -13,22 +13,24 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Define the full energy expenditure function
-def y(x):
-    return 2*x + 1
+def C(s):
+    return 5*s + 0.2*s**3
 
-# Generate datapoints for plotting 
-x_values = np.linspace(0, 10, 500)    # Generate values of x (500 values of x between 0 and 10)
-y_values = y(x_values)                # Compute the y values for the x values generated
-
+# Generate datapoints for plotting
+s_values = np.linspace(0, 10, 500)
+C_values = C(s_values)
 
 # Plot the function
 plt.figure(figsize=(10, 6))
-plt.plot(x_values, y_values, label='y = 2*x + 1')   # Giving a label that appears in the legend (if printed)
-plt.title('Example of a plot')                      # Title of the plot
-plt.xlabel("x")                                     # Name of the x-axis
-plt.ylabel("y")                                     # Name of the y-axis
-plt.xlim([0,5])                                     # Range of x-axis
-plt.ylim([0,10])                                    # Range of y-axis
-plt.grid(True)                                      # Plotting gridlines
-plt.legend(loc='upper left')                        # Plot the legend in the upper left corner
+plt.plot(s_values, C_values, label='C(s) = 5s + 0.2s^3')
+plt.title('Runner Energy Consumption')
+plt.xlabel('Speed (m/s)')
+plt.ylabel('Energy Expenditure (calories)')
+plt.xlim([0, 10])
+plt.ylim([0, 250])
+plt.grid(True)
+plt.legend(loc='lower right')
 plt.show()
+
+# Energy expenditure at 5 m/s
+print("Energy expenditure at 5 m/s:", C(5))
