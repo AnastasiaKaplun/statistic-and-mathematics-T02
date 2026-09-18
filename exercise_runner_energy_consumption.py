@@ -34,3 +34,26 @@ plt.show()
 
 # Energy expenditure at 5 m/s
 print("Energy expenditure at 5 m/s:", C(5))
+# Exercise runner energy consumption (2)
+# Compute the derivative to find when energy consumption starts to accelerate
+
+from sympy import symbols, diff, solve
+
+s = symbols('s')
+
+# Define the energy expenditure function
+C_function = 5*s + 0.2*s**3
+
+# Compute the derivative
+dC = diff(C_function, s)
+print("The derivative of C(s) is:", dC)
+
+# Find when the quadratic term in the derivative equals the constant term
+acceleration_speed = solve(0.6*s**2 - 5, s)
+
+# Keep the positive speed
+positive_speed = [value for value in acceleration_speed if value > 0][0]
+
+print("Energy expenditure starts to increase rapidly at approximately:",
+      float(positive_speed), "m/s")
+      
